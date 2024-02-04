@@ -1,0 +1,1 @@
+{"uuid":"13683b73-635d-4c31-94ea-494b7898895e","name":"NopCommerce","children":["96a62d72-3b0d-44c8-9969-5613b1d7cab6"],"befores":[{"name":"deleteFileReportNG","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1707029006302,"stop":1707029006312}],"afters":[],"start":1707029006279,"stop":1707029018676}

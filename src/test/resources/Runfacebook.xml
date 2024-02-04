@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" > 
+<suite parallel="none" name="Facebook_ Log in">
+ 	<parameter name ="url" value ="https://www.facebook.com/"/>
+ 
+<listeners>
+	<listener class-name="commons.MethodListener"/>
+
+	
+</listeners>
+  <test name="Run On Firefox">
+  <parameter name ="browser" value ="firefox"/>
+    <classes>
+      <class name="com.facebook.home.Level_20_Element_Undisplayed"/>
+    </classes>
+  </test> 
+  <!--
+<test name="Run On Chrome">
+  <parameter name ="browser" value ="chrome"/>
+    <classes>
+      <class name="com.nopcommerce.account.Level_07_Page_Manager_3"/>
+    </classes>
+  </test>  
+
+  
+ <test name="Run On Edge">
+  <parameter name ="browser" value ="edge"/>
+    <classes>
+      <class name="com.nopcommerce.account.Level_07_Page_Manager_3"/>
+    </classes>
+  </test>  -->
+</suite> 
