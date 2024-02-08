@@ -4,14 +4,14 @@
  	<parameter name ="adminUrl" value ="https://admin-demo.nopcommerce.com/"/>
  	<parameter name ="userUrl" value ="https://demo.nopcommerce.com/"/>
 <listeners>
-	<listener class-name="commons.MethodListener"/>
+  	<listener class-name="commons.MethodListener"/>
    <listener class-name="reportConfig.ExtentTestListener" /> 
 	
 </listeners>
   <test name="Run On Firefox">
   <parameter name ="browser" value ="firefox"/>
     <classes>
-      <class name="com.nopcommerce.account.Level_18_ExtentReportVer5"/>
+      <class name="com.nopcommerce.account.TC_02_Register"/>
     </classes>
   </test> 
   <!--

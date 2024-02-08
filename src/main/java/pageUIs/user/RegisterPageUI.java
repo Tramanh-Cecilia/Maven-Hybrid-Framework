@@ -14,6 +14,12 @@ public class RegisterPageUI {
 	public static final String EMAIL_ERROR_MSG = "xpath=//span[@id='Email-error']";
 	public static final String PASSWORD_ERROR_MSG = "xpath=//span[@id='Password-error']";
 	public static final String CONFIRMPASSWORD_ERROR_MSG = "xpath=//span[@id='ConfirmPassword-error']";
-
+	public static final String EMAIL_VALIDATION_ERROR_MSG = "xpath=//div[@class='message-error validation-summary-errors']//li";
+	
+	public static final String DYNAMIC_ERROR_MESSAGE_BY_NAME= "xpath=//span[@id='%s']";
+	public static final String DYNAMIC_TEXTBOX_BY_NAME= "xpath=//input[@id='%s']";
+	
+	public static final String CONTINUE_BUTTON_AFTER_REGISTRATION = "xpath=//a[text()='Continue']";
+	
 
 }

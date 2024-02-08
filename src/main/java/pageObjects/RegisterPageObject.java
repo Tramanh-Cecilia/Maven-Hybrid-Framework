@@ -19,6 +19,11 @@ public class RegisterPageObject extends BaseElement {
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 		
 	}
+	public void clickToContinueButton() {
+		waitForElementClickable(driver, RegisterPageUI.CONTINUE_BUTTON_AFTER_REGISTRATION);
+		clickToElement(driver, RegisterPageUI.CONTINUE_BUTTON_AFTER_REGISTRATION);
+		
+	}
 
 	public String getFirstNameErrorMessageText() {
 		waitForElementVisible(driver, RegisterPageUI.FIRSTNAME_ERROR_MSG );
@@ -45,7 +50,17 @@ public class RegisterPageObject extends BaseElement {
 		waitForElementVisible(driver, RegisterPageUI.CONFIRMPASSWORD_ERROR_MSG);
 		return getElementText(driver,RegisterPageUI.CONFIRMPASSWORD_ERROR_MSG);
 	}
+	
+	public String getEmailValidationErrorMessageText() {
+		waitForElementVisible(driver, RegisterPageUI.EMAIL_VALIDATION_ERROR_MSG);
+		return getElementText(driver,RegisterPageUI.EMAIL_VALIDATION_ERROR_MSG);
+	}
 
+	
+	public String getDynamicErrorMessageTextByTextboxName(String textboxName) {
+		waitForElementVisible(driver, RegisterPageUI.DYNAMIC_ERROR_MESSAGE_BY_NAME,textboxName );
+		return getElementText(driver,RegisterPageUI.DYNAMIC_ERROR_MESSAGE_BY_NAME,textboxName );
+	}
 	
 
 	public void enterToFirstNameTextBox(String firstNameValue) {
@@ -71,6 +86,15 @@ public class RegisterPageObject extends BaseElement {
 
 	}
 
+	public void enterToDynamicTextboxByName(String textboxName, String valueToSend ) {
+		waitForElementVisible(driver, RegisterPageUI.DYNAMIC_TEXTBOX_BY_NAME, textboxName);
+		sendkeyToElement(driver, RegisterPageUI.DYNAMIC_TEXTBOX_BY_NAME, valueToSend, textboxName);
+
+	}
+	
+	
+	
+	
 	public void enterToConfirmPasswordNameTextBox(String confirmPasswordValue) {
 		waitForElementVisible(driver, RegisterPageUI.CONFRIM_PASSWORD_TEXTBOX  );
 		sendkeyToElement(driver, RegisterPageUI.CONFRIM_PASSWORD_TEXTBOX  ,  confirmPasswordValue);
