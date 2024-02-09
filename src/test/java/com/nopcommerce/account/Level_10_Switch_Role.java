@@ -63,7 +63,7 @@ public class Level_10_Switch_Role extends BaseTest {
 		loginPage = homePage.clickToLoginLink();
 		loginPage.enterToEmailTextbox(emailAddress);
 		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
+//		homePage = loginPage.clickToLoginButton();
 		homePage.clickToLogOutLink();
 		
 		homePage.openPageUrl(driver, this.adminURL);

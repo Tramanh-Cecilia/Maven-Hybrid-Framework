@@ -23,19 +23,21 @@ public class TC_02_Register extends BaseTest {
 	private WebDriver driver;
 	private RegisterPageObject registerPage;
 	private HomePageObject homePage;
-	String emailAddress = getEmailRandom();
+	private final String emailAddress = getEmailRandom();
 	private String firstName= "Annabella";
 	private String lastName= "Tarek";
-	private String password= "123456@";
+	public String password= "123456@";
 
 	@Parameters({ "browser", "userUrl" })
-	@BeforeClass
+	@BeforeClass 
 	public void beforeClass(String browserName, String userUrl) {
 
 		driver = getBrowserDrivers(browserName);
 
 		homePage = PageGeneratorManager.getHomePage(driver);
-
+		homePage.clickToHeaderLinkByName("Register");
+		registerPage = PageGeneratorManager.getRegisterPage(driver);
+		registerPage.clickToButtonByText("Register");
 	}
 
 	@Test
@@ -43,29 +45,24 @@ public class TC_02_Register extends BaseTest {
 
 		ExtentTestManager.startTest(method.getName(), "TC_01_Register_with_Empty_Data");
 
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 01: Open 'Register' page");
-		
-		homePage.clickToHeaderLinkByName("Register");
-		registerPage = PageGeneratorManager.getRegisterPage(driver);
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 02: Click To Register Button");
-		registerPage.clickToButtonByText("Register");
+	
 
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 03: Compare FirstName Error Message");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 01: Compare FirstName Error Message");
 		Assert.assertEquals(registerPage.getDynamicErrorMessageTextByTextboxName("FirstName-error"),
 				"First name is required.");
 
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 04:  Compare LastName Error Message");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 02:  Compare LastName Error Message");
 		Assert.assertEquals(registerPage.getDynamicErrorMessageTextByTextboxName("LastName-error"),
 				"Last name is required.");
 
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 05: Compare Email Error Message");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 03: Compare Email Error Message");
 		Assert.assertEquals(registerPage.getDynamicErrorMessageTextByTextboxName("Email-error"), "Email is required.");
 
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 06: Compare Password Error Message");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 04: Compare Password Error Message");
 		Assert.assertEquals(registerPage.getDynamicErrorMessageTextByTextboxName("Password-error"),
 				"Password is required.");
 
-		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 07: Compare ConfirmPassword Error Message");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-01- Step 05: Compare ConfirmPassword Error Message");
 		Assert.assertEquals(registerPage.getDynamicErrorMessageTextByTextboxName("ConfirmPassword-error"),
 				"Password is required.");
 
@@ -100,6 +97,8 @@ public class TC_02_Register extends BaseTest {
 		
 		ExtentTestManager.getTest().log(Status.INFO, "TC-03- Step 03: Enter to Email Texbox");
 		registerPage.enterToDynamicTextboxByName("Email", emailAddress);
+		 System.out.println(emailAddress);
+		
 			
 		ExtentTestManager.getTest().log(Status.INFO, "TC-03- Step 04: Enter to  Password Texbox");
 		registerPage.enterToDynamicTextboxByName("Password", password);
@@ -115,7 +114,11 @@ public class TC_02_Register extends BaseTest {
 		
 	}
 	
-	
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
 	@Test
 	public void TC_04_Register_with_Invalid_Information(Method method) {
 
@@ -136,10 +139,10 @@ public class TC_02_Register extends BaseTest {
 		ExtentTestManager.getTest().log(Status.INFO, "TC-04- Step 04: Enter to LastName Texbox");
 		registerPage.enterToDynamicTextboxByName("LastName", lastName);
 		
-		ExtentTestManager.getTest().log(Status.INFO, "TC-04- Step 05: Enter to Email Texbox");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-04- Step 05: Enter to Email Texbox"+ emailAddress);
 		registerPage.enterToDynamicTextboxByName("Email", emailAddress);
 			
-		ExtentTestManager.getTest().log(Status.INFO, "TC-04- Step 06: Enter to  Password Texbox");
+		ExtentTestManager.getTest().log(Status.INFO, "TC-04- Step 06: Enter to  Password Texbox" +password);
 		registerPage.enterToDynamicTextboxByName("Password", password);
 		
 		ExtentTestManager.getTest().log(Status.INFO, "TC-04- Step 07: Enter to  Confirm Password Texbox");
@@ -213,10 +216,6 @@ public class TC_02_Register extends BaseTest {
 		
 	}
 
-	public String getEmailRandom() {
-		Random rand = new Random();
-		return "John" + rand.nextInt(99999) + "@gmail.com";
-
-	}
+	
 
 }

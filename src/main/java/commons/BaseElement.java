@@ -1,5 +1,7 @@
 package commons;
 
+import java.util.Random;
+
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.HomePageObject;
@@ -46,6 +48,10 @@ public class BaseElement extends BasePage {
 		return getElementAttribute(driver, BaseElementUI.DYNAMIC_TEXTBOX_BY_ID, "value",textboxID);
 	}
 
+	private static final String getEmailRandom() {
+		Random rand = new Random();
+		return "John" + rand.nextInt(99999) + "@gmail.com";
 
+	}
 
 }

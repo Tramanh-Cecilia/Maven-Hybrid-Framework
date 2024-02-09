@@ -27,16 +27,29 @@ public class LoginPageObject extends BaseElement {
 		sendkeyToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, password);
 
 	}
+	
+	public void enterToDynamicTextboxInLoginPage(String textboxName, String valueToSend) {
+		waitForElementVisible(driver,UserLoginPageUI.DYNAMIC_TEXTBOX_BY_NAME,textboxName );
+		sendkeyToElement(driver, UserLoginPageUI.DYNAMIC_TEXTBOX_BY_NAME, valueToSend,textboxName);
 
-	public HomePageObject clickToLoginButton() {
+	}
+	
+	
+
+	public void clickToLoginButton() {
 		waitForElementClickable(driver,UserLoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, UserLoginPageUI.LOGIN_BUTTON);
-		return PageGeneratorManager.getHomePage(driver);
 	}
 
-	public String getErrorMessageForWrongPassword() {
+	public String getErrorMessageInLoginPage() {
 		waitForElementVisible(driver, UserLoginPageUI.LOGIN_ERROR_MESSAGE);
 		return getElementText(driver, UserLoginPageUI.LOGIN_ERROR_MESSAGE);
 	}
+
+	public String getEmailErrorMessage() {
+		waitForElementVisible(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
+		return getElementText(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
+	}
+	
 
 }

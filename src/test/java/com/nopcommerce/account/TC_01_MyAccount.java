@@ -147,7 +147,7 @@ public class TC_01_MyAccount extends BasePage {
 		loginPage.enterToEmailTextbox(emailAddress);
 		loginPage.enterToPasswordTextbox(passwordValue);
 		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorMessageForWrongPassword(),
+		Assert.assertEquals(loginPage.getErrorMessageInLoginPage(),
 				"Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 
 		

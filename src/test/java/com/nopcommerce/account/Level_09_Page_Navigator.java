@@ -58,7 +58,7 @@ public class Level_09_Page_Navigator extends BaseTest {
 		loginPage = homePage.clickToLoginLink();
 		loginPage.enterToEmailTextbox(emailAddress);
 		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
+//		homePage = loginPage.clickToLoginButton();
 		
 
 

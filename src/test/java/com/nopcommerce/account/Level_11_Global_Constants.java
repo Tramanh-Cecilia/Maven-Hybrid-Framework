@@ -64,7 +64,7 @@ public class Level_11_Global_Constants extends BaseTest {
 		loginPage = homePage.clickToLoginLink();
 		loginPage.enterToEmailTextbox(emailAddress);
 		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
+	//	homePage = loginPage.clickToLoginButton();
 		homePage.clickToLogOutLink();
 		
 		homePage.openPageUrl(driver, adminURL);

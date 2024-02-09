@@ -63,7 +63,7 @@ public class Level_08_Switch_Page extends BaseTest {
 		loginPage = homePage.clickToLoginLink();
 		loginPage.enterToEmailTextbox(emailAddress);
 		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
+//		homePage = loginPage.clickToLoginButton();
 		customerPage = homePage.clickToMyAccountLink();
 		Assert.assertEquals(customerPage.getFirstNameAttributeValue(), "John");
 		Assert.assertEquals(customerPage.getLasttNameAttributeValue(), "Kennedy");

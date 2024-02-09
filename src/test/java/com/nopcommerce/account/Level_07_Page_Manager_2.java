@@ -127,7 +127,7 @@ public class Level_07_Page_Manager_2 extends BaseTest {
 		loginPage = homePage.clickToLoginLink();
 		loginPage.enterToEmailTextbox(emailAddress);
 		loginPage.enterToPasswordTextbox("123456");
-		homePage = loginPage.clickToLoginButton();
+//		homePage = loginPage.clickToLoginButton();
 
 		customerPage = homePage.clickToMyAccountLink();
 		Assert.assertEquals(customerPage.getFirstNameAttributeValue(), "John");
