@@ -1,7 +1,7 @@
 package com.nopcommerce.account;
 
 import java.lang.reflect.Method;
-import java.util.Random;
+
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -25,7 +25,7 @@ public class TC_03_Login extends BaseTest {
 	private RegisterPageObject registerPage;
 	private LoginPageObject userLoginPage;
 	private HomePageObject homePage;
-	private final String emailAddress = getEmailRandom();
+	private final String emailAddress = TC_02_Register.emailAddress;
 	private String firstName= "Annabella";
 	private String lastName= "Tarek";
 	public String password= "123456@";
@@ -37,6 +37,7 @@ public class TC_03_Login extends BaseTest {
 		driver = getBrowserDrivers(browserName);
 
 		homePage = PageGeneratorManager.getHomePage(driver);
+		 System.out.println(emailAddress);
 		
 		homePage.clickToHeaderLinkByName("Register");
 		registerPage = PageGeneratorManager.getRegisterPage(driver);

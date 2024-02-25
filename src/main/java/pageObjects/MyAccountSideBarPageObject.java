@@ -52,6 +52,8 @@ public class MyAccountSideBarPageObject extends BaseElement {
 			return PageGeneratorManager.getOrderPage(driver);
 		case "Reward points":
 			return PageGeneratorManager.getRewardPointPage(driver);
+		case "Change password":
+			return PageGeneratorManager.getchangePasswordPageObject(driver);
 
 		default:
 			new RuntimeException("Sidebar page Name Incorrect");

@@ -3,6 +3,7 @@ package commons;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.AddressPageObject;
+import pageObjects.ChangePasswordPageObject;
 import pageObjects.CustomerPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
@@ -43,5 +44,10 @@ public class PageGeneratorManager {
 	public static AdminDashboardPageObject  getAdminDashBoardPage(WebDriver driver) {
 		return new AdminDashboardPageObject(driver);
 	}
+	
+	public static ChangePasswordPageObject  getchangePasswordPageObject (WebDriver driver) {
+		return new ChangePasswordPageObject(driver);
+	}
+	
 	
 }

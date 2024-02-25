@@ -123,7 +123,7 @@ public class BaseTest {
 		}
 	}
 
-	public String getEmailRandom() {
+	public static String getEmailRandom() {
 		Random rand = new Random();
 		return "John" + rand.nextInt(99999) + "@gmail.com";
 

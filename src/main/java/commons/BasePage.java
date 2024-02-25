@@ -171,6 +171,9 @@ public class BasePage {
 	public WebElement getWebElement(WebDriver driver, String locator) {
 		return driver.findElement(getByLocator(locator));
 	}
+	public WebElement getWebElement(WebDriver driver, String locator,String...restParams) {
+		return driver.findElement(getByLocator(locator ));
+	}
 
 	public List<WebElement> getListWebElement(WebDriver driver, String locator) {
 		return driver.findElements(getByLocator(locator));
@@ -218,6 +221,9 @@ public class BasePage {
 
 	public String selectFirstSelectedTextInDefaultDropdown(WebDriver driver, String locator) {
 		return new Select(getWebElement(driver, locator)).getFirstSelectedOption().getText();
+	}
+	public String selectFirstSelectedTextInDefaultDropdown(WebDriver driver, String locator,String...restParams) {
+		return new Select(getWebElement(driver, getDynamicLocator(locator, restParams))).getFirstSelectedOption().getText();
 	}
 
 	public boolean isDefaultDropdownMultiple(WebDriver driver, String locator) {
@@ -276,6 +282,7 @@ public class BasePage {
 			getWebElement(driver, locator).click();
 		}
 	}
+	
 
 	/**
 	 * Only apply for checkbox

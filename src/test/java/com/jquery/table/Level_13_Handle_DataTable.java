@@ -117,11 +117,11 @@ public class Level_13_Handle_DataTable extends BaseTest {
 	public void afterClass() {
 	}
 	
-	public String getEmailRandom() {
-		Random rand = new Random();
-		return "John" + rand.nextInt(99999) + "@gmail.com";
+//	public String getEmailRandom() {
+//		Random rand = new Random();
+//		return "John" + rand.nextInt(99999) + "@gmail.com";
 
-	}
+//	}
 	public String getNameRandom() {
 		Random rand = new Random();
 		return "David" + rand.nextInt(999) ;

@@ -23,7 +23,7 @@ public class TC_02_Register extends BaseTest {
 	private WebDriver driver;
 	private RegisterPageObject registerPage;
 	private HomePageObject homePage;
-	private final String emailAddress = getEmailRandom();
+	public static String emailAddress = getEmailRandom();
 	private String firstName= "Annabella";
 	private String lastName= "Tarek";
 	public String password= "123456@";

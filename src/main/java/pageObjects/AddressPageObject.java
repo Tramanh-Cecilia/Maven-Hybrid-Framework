@@ -11,79 +11,14 @@ public class AddressPageObject extends MyAccountSideBarPageObject {
 		super(driver);
 		this.driver = driver;
 	}
+	
+	public void clickToAddNewButton() {
+		waitForElementClickable(driver, AddressPageUI.ADD_NEW_BUTTON);
+		clickToElement(driver, AddressPageUI.ADD_NEW_BUTTON);
 
-	public void enterToFirstNameTextBox(String addressFirstName) {
-		waitForElementClickable(driver,  AddressPageUI.FIRST_NAME_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.FIRST_NAME_TEXTBOX, addressFirstName);
-		
-		
 	}
 
-	public void enterToLastNameTextBox(String addressLastName) {
-		waitForElementClickable(driver,  AddressPageUI.LAST_NAME_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.LAST_NAME_TEXTBOX, addressLastName);
-		
-	}
 
-	public void enterToEmailTextBox(String addressEmailValue) {
-		waitForElementClickable(driver,  AddressPageUI.EMAIL_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.EMAIL_TEXTBOX, addressEmailValue);
-		
-	}
-
-	public void enterToCompanyTextBox(String addressCompanyValue) {
-		waitForElementClickable(driver,  AddressPageUI.COMPANY_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.COMPANY_TEXTBOX, addressCompanyValue);
-		
-	}
-
-	public void selectCountryDropDown(String countryValue) {
-		waitForElementClickable(driver, AddressPageUI.COUNTRY_DROPDOWN);
-		selectItemInDefaultDropdown(driver, AddressPageUI.COUNTRY_DROPDOWN, countryValue);
-		
-	}
-
-	public void selectSateDropDown(String stateProvinceValue) {
-		waitForElementClickable(driver, AddressPageUI.STATE_PROVINCE_DROPDOWN);
-		selectItemInDefaultDropdown(driver, AddressPageUI.STATE_PROVINCE_DROPDOWN, stateProvinceValue);
-		
-	}
-
-	public void enterToCityTextBox(String addressCityValue) {
-		waitForElementClickable(driver,  AddressPageUI.CITY_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.CITY_TEXTBOX, addressCityValue);
-		
-	}
-
-	public void enterToAddress1TextBox(String address01Value) {
-		waitForElementClickable(driver,  AddressPageUI.ADDRESS_1_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.ADDRESS_1_TEXTBOX, address01Value);
-		
-	}
-
-	public void enterToAdress2TextBox(String address02Value) {
-		waitForElementClickable(driver,  AddressPageUI.ADDRESS_2_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.ADDRESS_2_TEXTBOX, address02Value);
-		
-	}
-
-	public void enterToZipCodeTextBox(String addressZipCodeValue) {
-		waitForElementClickable(driver,  AddressPageUI.ZIP_POSTALCODE_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.ZIP_POSTALCODE_TEXTBOX, addressZipCodeValue);
-		
-	}
-
-	public void enterToPhoneNumberTextBox(String addressPhoneNumberValue) {
-		waitForElementClickable(driver,  AddressPageUI.PHONE_NUMBER_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.PHONE_NUMBER_TEXTBOX, addressPhoneNumberValue);
-		
-	}
-
-	public void enterToFaxNumberTextBox(String addressFaxValue) {
-		waitForElementClickable(driver,  AddressPageUI.FAX_NUMBER_TEXTBOX);
-		sendkeyToElement(driver, AddressPageUI.FAX_NUMBER_TEXTBOX, addressFaxValue);
-		
-	}
 
 	public void clickToSaveButton() {
 		waitForElementClickable(driver,  AddressPageUI.SAVE_ADDRESS_BUTTON);
@@ -142,6 +77,17 @@ public class AddressPageObject extends MyAccountSideBarPageObject {
 	public String getCountryTexBoxValue() {
 		waitForElementVisible(driver, AddressPageUI.COUNTRY_VALUE_FIELD);
 		return getElementText(driver,AddressPageUI.COUNTRY_VALUE_FIELD);
+
+	}
+
+	public void enterToDynamicTextboxById(String valueToSend, String textboxID) {
+		waitForElementClickable(driver,  AddressPageUI.DYNAMIC_UPDATE_ADDRESS_PAGE_TEXTBOX, textboxID);
+		sendkeyToElement(driver, AddressPageUI.DYNAMIC_UPDATE_ADDRESS_PAGE_TEXTBOX, valueToSend , textboxID);
+		
+	}
+	public String getDynamicTexBoxValueByClass(String textboxClass) {
+		waitForElementVisible(driver, AddressPageUI.DYNAMIC_INFORMATION_VALUE_FIELD,textboxClass );
+		return getElementText(driver,AddressPageUI.DYNAMIC_INFORMATION_VALUE_FIELD, textboxClass );
 
 	}
 

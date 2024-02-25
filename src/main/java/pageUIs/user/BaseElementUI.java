@@ -7,4 +7,5 @@ public class BaseElementUI {
 	public static final String DYNAMIC_BUTTON_BY_TEXT ="xpath=//button[text()='%s']";
 	public static final String DYNAMIC_ERROR_MESSAGE_BY_ID ="id=%s-error";
 	public static final String DYNAMIC_TEXTBOX_BY_ID ="css=input[id='%s']";
+	public static final String DYNAMIC_NOTIFICATION_HEADER ="xpath=//div[@id='bar-notification']//p[@class='content']";
 }

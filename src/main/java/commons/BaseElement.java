@@ -53,5 +53,10 @@ public class BaseElement extends BasePage {
 		return "John" + rand.nextInt(99999) + "@gmail.com";
 
 	}
+	
+	public String getNotificationHeaderMessage () {
+		waitForElementVisible(driver, BaseElementUI.DYNAMIC_NOTIFICATION_HEADER);
+		return getElementText(driver, BaseElementUI.DYNAMIC_NOTIFICATION_HEADER);
+	}
 
 }

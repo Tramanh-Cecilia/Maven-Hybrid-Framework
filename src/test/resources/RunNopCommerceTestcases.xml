@@ -11,7 +11,7 @@
 	<test name="Run On Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-	<!--	<class name="com.nopcommerce.account.TC_02_Register">
+				<!--<class name="com.nopcommerce.account.TC_02_Register">
 				<methods>
 					<include name="TC_03_Register_with_Valid_Information" />
 				</methods>
