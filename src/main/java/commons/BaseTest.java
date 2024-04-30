@@ -129,6 +129,12 @@ public class BaseTest {
 
 	}
 
+	public static String getEmailRandom(String prefix) {
+		Random rand = new Random();
+		return prefix + rand.nextInt(99999) + "@gmail.com";
+
+	}
+
 	protected boolean verifyTrue(boolean condition) {
 		boolean pass = true;
 		try {
