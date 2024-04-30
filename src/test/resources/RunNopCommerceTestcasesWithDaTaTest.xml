@@ -8,6 +8,12 @@
 		<listener class-name="reportConfig.ExtentTestListener" />
 
 	</listeners>
+
+	<parameter name="email" value="John" />
+	<parameter name="firstName" value="John" />
+	<parameter name="lastName" value="kenedy" />
+	<parameter name="password" value="123456" />
+
 	<test name="Run On Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
@@ -16,7 +22,7 @@
 					<include name="TC_03_Register_with_Valid_Information" />
 				</methods>
 			</class>-->
-			<class name="com.nopcommerce.account.Level_23_FakerData" />
+			<class name="com.nopcommerce.account.Level_25_DataTestInXML" />
 		</classes>
 	</test>
 	<!--
