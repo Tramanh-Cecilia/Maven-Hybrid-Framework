@@ -84,7 +84,7 @@ public class Level_28_Data_JSON extends BaseTest {
 
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 03: Enter to Register form");
 //        registerPage.setToRegisterform();
-
+//
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 04: Click to register button.");
         registerPage.clickToRegisterButton();
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 05: Get Success Message.");
