@@ -4,6 +4,7 @@ import commons.BaseElement;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.RegisterPageUI;
 import pojoTestData.UserInfo;
+import pojoTestData.jsonData.JsonDataNopCommerce;
 
 public class RegisterPageObject extends BaseElement {
     WebDriver driver;
@@ -111,6 +112,16 @@ public class RegisterPageObject extends BaseElement {
         enterToPasswordNameTextBox(userInfo.getPassword());
         enterToConfirmPasswordNameTextBox(userInfo.getPassword());
     }
+
+
+    public void setToRegisterformForJsonData(JsonDataNopCommerce JsonDataNopCommerce) {
+        enterToFirstNameTextBox(JsonDataNopCommerce.getFirstName());
+        enterToLastNameTextBox(JsonDataNopCommerce.getLastName());
+        enterToEmailTextBox(JsonDataNopCommerce.getEmail());
+        enterToPasswordNameTextBox(JsonDataNopCommerce.getPassword());
+        enterToConfirmPasswordNameTextBox(JsonDataNopCommerce.getPassword());
+    }
+
 
 
 }

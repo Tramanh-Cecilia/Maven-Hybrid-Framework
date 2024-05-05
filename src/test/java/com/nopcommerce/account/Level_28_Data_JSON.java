@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
-import pojoTestData.UserInfo;
 import pojoTestData.jsonData.JsonDataNopCommerce;
 import reportConfig.ExtentTestManager;
 
@@ -27,7 +26,8 @@ public class Level_28_Data_JSON extends BaseTest {
     private OrderPageObject orderPage;
     private AddressPageObject addressPage;
     private RewardPointPageObject rewardPointPage;
-    private String emailAddress = getEmailRandom("John");
+    private String emailAddress;
+//    private String emailAddress = getEmailRandom("John");
     private JsonDataNopCommerce jsonDataNopCommerce;
     Random rand;
 
@@ -37,11 +37,11 @@ public class Level_28_Data_JSON extends BaseTest {
         driver = getBrowserDrivers(browserName);
 
         homePage = PageGeneratorManager.getHomePage(driver);
-        jsonDataNopCommerce = JsonDataNopCommerce.getJsonDataNopCommerce("jsonData");
-        jsonDataNopCommerce.getAddress();
-        jsonDataNopCommerce.getFirstName();
-        jsonDataNopCommerce.getLastName();
-        jsonDataNopCommerce.getEmail();
+        jsonDataNopCommerce = JsonDataNopCommerce.getJsonDataNopCommerce("jsonData.json");
+        emailAddress=getEmailRandom(jsonDataNopCommerce.getEmail());
+
+       jsonDataNopCommerce.setEmailAddress(emailAddress);
+        System.out.println(emailAddress);
     }
 
     @Test
@@ -83,8 +83,8 @@ public class Level_28_Data_JSON extends BaseTest {
         registerPage = homePage.clickToRegisterLink();
 
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 03: Enter to Register form");
-//        registerPage.setToRegisterform();
-//
+        registerPage.setToRegisterformForJsonData(jsonDataNopCommerce);
+
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 04: Click to register button.");
         registerPage.clickToRegisterButton();
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 05: Get Success Message.");

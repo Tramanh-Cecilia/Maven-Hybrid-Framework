@@ -29,10 +29,18 @@ public class JsonDataNopCommerce {
     @JsonProperty("email")
     private String emailAddress;
 
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+
+    }
+
+
+
     @JsonProperty("address")
     String address;
 
     public String getFirstName() {
+        System.out.println(firstname);
         return firstname;
     }
 

@@ -16,12 +16,7 @@ import com.aventstack.extentreports.Status;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.AddressPageObject;
-import pageObjects.ChangePasswordPageObject;
-import pageObjects.CustomerPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.*;
 import reportConfig.ExtentTestManager;
 
 public class TC_01_MyAccount extends BaseTest {
