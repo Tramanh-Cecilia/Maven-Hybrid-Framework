@@ -12,11 +12,12 @@ import org.testng.annotations.Test;
 import pageObjects.*;
 import pojoTestData.jsonData.JsonDataNopCommerce;
 import reportConfig.ExtentTestManager;
+import utilities.ExcelConfig;
 
 import java.lang.reflect.Method;
 import java.util.Random;
 
-public class Level_28_Data_JSON extends BaseTest {
+public class Level_29_Data_EXCEL extends BaseTest {
 
     private WebDriver driver;
     private HomePageObject homePage;
@@ -26,23 +27,23 @@ public class Level_28_Data_JSON extends BaseTest {
     private OrderPageObject orderPage;
     private AddressPageObject addressPage;
     private RewardPointPageObject rewardPointPage;
-    private String emailAddress;
-//    private String emailAddress = getEmailRandom("John");
-    private JsonDataNopCommerce jsonDataNopCommerce;
+    private String emailAddress, firstName, lastName, password;
+    private ExcelConfig excelConfig;
     Random rand;
 
     @Parameters("browser")
     @BeforeClass
     public void beforeClass(String browserName) {
-        System.out.println(System.getProperty("user.dir"));
+
         driver = getBrowserDrivers(browserName);
 
         homePage = PageGeneratorManager.getHomePage(driver);
-        jsonDataNopCommerce = JsonDataNopCommerce.getJsonDataNopCommerce("jsonData.json");
-        emailAddress=getEmailRandom(jsonDataNopCommerce.getEmail());
-
-       jsonDataNopCommerce.setEmailAddress(emailAddress);
-        System.out.println(emailAddress);
+        excelConfig = ExcelConfig.getExcelData();
+        excelConfig.switchToSheet("DataTest");
+        firstName = excelConfig.getCellData("FirstName", 1);
+        lastName = excelConfig.getCellData("LastName", 1);
+        emailAddress = getEmailRandom(excelConfig.getCellData("EmailAddress", 1));
+        password = excelConfig.getCellData("Password", 1);
     }
 
     @Test
@@ -83,14 +84,20 @@ public class Level_28_Data_JSON extends BaseTest {
         ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 02: Click to register Link");
         registerPage = homePage.clickToRegisterLink();
 
-        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 03: Enter to Register form");
-        registerPage.setToRegisterformForJsonData(jsonDataNopCommerce);
-
-        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 04: Click to register button.");
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 03: Enter To FN textbox" + firstName);
+        registerPage.enterToFirstNameTextBox(firstName);
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 04: Enter To LastName textbox" + lastName);
+        registerPage.enterToLastNameTextBox(lastName);
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 05: Enter to Email Textbox" + emailAddress);
+        registerPage.enterToEmailTextBox(emailAddress);
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 06: Enter to Password Textbox" + password);
+        registerPage.enterToPasswordNameTextBox(password);
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 07: Enter to Confirm Password Textbox");
+        registerPage.enterToConfirmPasswordNameTextBox(password);
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 08: Click to register button.");
         registerPage.clickToRegisterButton();
-        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 05: Get Success Message.");
+        ExtentTestManager.getTest().log(Status.INFO, "Register Success - Step 09: Get Success Message.");
         Assert.assertEquals(registerPage.getRegisterSuccessMessageText(), "Your registration completed");
-
     }
 
     @AfterClass

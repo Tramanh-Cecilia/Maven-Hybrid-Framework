@@ -16,5 +16,5 @@ public class GlobalConstants {
 	public static final String DOWNLOAD_PATH=RELATIVE_PROJECT_PATH+File.separator+"downloadFiles"+File.separator;
 	public static final String REPORT_IMAGE_PATH=RELATIVE_PROJECT_PATH + File.separator+"ReportNGScreenShots"+File.separator;
 	public static final String RESOURCES_PATH="D:\\Automation\\03 - Maven-Hybrid-Framework\\src\\test" + File.separator+"resources"+File.separator;
-
+	public static final String RESOURCES_PROJECT_PATH= RELATIVE_PROJECT_PATH+ File.separator+"src\\test\\resources\\";
 }

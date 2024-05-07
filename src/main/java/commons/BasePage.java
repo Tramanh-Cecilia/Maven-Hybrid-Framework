@@ -274,8 +274,7 @@ public class BasePage {
 	/**
 	 * Apply for checkbox and radio Button
 	 * 
-	 * @param Driver
-	 * @param locator
+	 *
 	 */
 	public void checkToElement(WebDriver driver, String locator) {
 		if (!getWebElement(driver, locator).isSelected()) {
@@ -287,8 +286,7 @@ public class BasePage {
 	/**
 	 * Only apply for checkbox
 	 * 
-	 * @param Driver
-	 * @param locator
+	 *
 	 */
 	public void uncheckToElement(WebDriver driver, String locator) {
 		if (getWebElement(driver, locator).isSelected()) {
