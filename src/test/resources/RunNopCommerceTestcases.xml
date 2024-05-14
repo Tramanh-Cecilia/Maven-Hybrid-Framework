@@ -10,6 +10,7 @@
 	</listeners>
 	<test name="Run On Firefox">
 		<parameter name="browser" value="firefox" />
+		<parameter name="url" value="https://demo.nopcommerce.com/" />
 		<classes>
 				<!--<class name="com.nopcommerce.account.TC_02_Register">
 				<methods>

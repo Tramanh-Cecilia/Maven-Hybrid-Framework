@@ -19,7 +19,7 @@
 					<include name="TC_03_Register_with_Valid_Information" />
 				</methods>
 			</class>-->
-			<class name="com.nopcommerce.account.Level_31_Environment_01" />
+			<class name="com.nopcommerce.account.Level_32_Environment_02" />
 		</classes>
 	</test>
 	<!--
