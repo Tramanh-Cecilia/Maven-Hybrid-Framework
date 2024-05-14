@@ -38,6 +38,12 @@ public class MyAccountSideBarPageObject extends BaseElement {
 		return PageGeneratorManager.getCustomerPage(driver);
 	}
 
+	public ChangePasswordPageObject openChangePasswordPage(String pageName){
+		waitForElementClickable(driver,MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT,pageName);
+		clickToElement(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT,pageName);
+		return PageGeneratorManager.getchangePasswordPageObject(driver);
+	}
+
 	public MyAccountSideBarPageObject openDynamicSidePageBar(String pageName) {
 
 		waitForElementClickable(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT, pageName);

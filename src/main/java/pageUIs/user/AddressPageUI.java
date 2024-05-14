@@ -17,5 +17,6 @@ public class AddressPageUI {
 	public static final String ADDRESS_2_VALUE_FIELD ="xpath=//li[@class='address2']";
 	public static final String CITY_STATE_VALUE_FIELD ="xpath=//li[@class='city-state-zip']";
 	public static final String COUNTRY_VALUE_FIELD ="xpath=//li[@class='country']";
-	
+
+    public static final String DYNAMIC_DROPDOWN_BY_ID ="id=%s" ;
 }

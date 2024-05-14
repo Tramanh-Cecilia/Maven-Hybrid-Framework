@@ -29,6 +29,12 @@ public class BaseElement extends BasePage {
 		clickToElement(driver, BaseElementUI.DYNAMIC_HEADER_LINK_BY_NAME, pageName);
 
 	}
+
+	public void clickToHeaderLinkByNameWithJS(String pageName) {
+		waitForElementClickable(driver, BaseElementUI.DYNAMIC_HEADER_LINK_BY_NAME, pageName);
+		clickToElementByJS(driver, BaseElementUI.DYNAMIC_HEADER_LINK_BY_NAME, pageName);
+
+	}
 	public void clickToButtonByText(String buttonText) {
 		waitForElementClickable(driver, BaseElementUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
 		clickToElement(driver, BaseElementUI.DYNAMIC_BUTTON_BY_TEXT,buttonText);
@@ -57,6 +63,11 @@ public class BaseElement extends BasePage {
 	public String getNotificationHeaderMessage () {
 		waitForElementVisible(driver, BaseElementUI.DYNAMIC_NOTIFICATION_HEADER);
 		return getElementText(driver, BaseElementUI.DYNAMIC_NOTIFICATION_HEADER);
+	}
+
+	public void clickToCloseButtonOnSuccessMessageBanner(){
+		waitForElementClickable(driver,BaseElementUI.CLOSE_BUTTON_FOR_SUCCESS_MESSAGE);
+		clickToElement(driver,BaseElementUI.CLOSE_BUTTON_FOR_SUCCESS_MESSAGE );
 	}
 
 }

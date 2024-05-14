@@ -50,6 +50,12 @@ public class LoginPageObject extends BaseElement {
 		waitForElementVisible(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
 		return getElementText(driver, UserLoginPageUI.EMAIL_ERROR_MESSAGE);
 	}
-	
 
+
+    public void enterToLoginForm(String emailAddress, String password) {
+		enterToEmailTextbox(emailAddress);
+		enterToPasswordTextbox(password);
+		clickToLoginButton();
+
+    }
 }

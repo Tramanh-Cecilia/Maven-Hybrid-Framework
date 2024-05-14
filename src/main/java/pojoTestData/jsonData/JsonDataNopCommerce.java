@@ -1,5 +1,6 @@
 package pojoTestData.jsonData;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +29,40 @@ public class JsonDataNopCommerce {
     private String password;
     @JsonProperty("email")
     private String emailAddress;
+    @JsonProperty("dob")
+    private String dob;
+    @JsonProperty("companyname")
+    private String companyName;
 
+    @JsonProperty("day")
+    private String dayOfDOB;
+    @JsonProperty("month")
+    private String monthOfDOB;
+    @JsonProperty("year")
+    private String yearOfDOB;
+
+    @JsonProperty("country")
+    private String country;
+
+    @JsonProperty("city")
+    private String city;
+
+    @JsonProperty("address1")
+    private String address1;
+    @JsonProperty("address2")
+    private String address2;
+
+    @JsonProperty("postalcode")
+    private String postalcode;
+
+    @JsonProperty("phonenumber")
+    private String phonenumber;
+
+    @JsonProperty("faxnumber")
+    private String faxnumber;
+
+    @JsonProperty("state")
+    private String state;
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
 
@@ -60,9 +94,56 @@ public class JsonDataNopCommerce {
     }
 
 
-    public String getAddress() {
-        return address;
+
+    public String getDob() {
+        return dob;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
 
+    public String getDayOfDOB() {
+        return dayOfDOB;
+    }
+
+    public String getMonthOfDOB() {
+        return monthOfDOB;
+    }
+
+    public String getYearOfDOB() {
+        return yearOfDOB;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public String getPostalcode() {
+        return postalcode;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public String getFaxnumber() {
+        return faxnumber;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
 }

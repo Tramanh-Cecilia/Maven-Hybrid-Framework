@@ -1,0 +1,18 @@
+{
+  "firstname": "Automation",
+  "lastname": "Pham",
+  "dob": "01 Jan 1999",
+  "day": "1",
+  "month": "January",
+  "year": "1999",
+  "email": "automation.pham@gmail.com",
+  "companyname": "automation Company",
+  "country": "Viet Nam",
+  "state": "Other",
+ "city": "Da Nang",
+  "address1":"123/04 Le Lai",
+  "address2": "234/05 Hai Phong",
+  "postalcode": "550000",
+  "phonenumber": "0123456789",
+  "faxnumber": "098765431"
+}

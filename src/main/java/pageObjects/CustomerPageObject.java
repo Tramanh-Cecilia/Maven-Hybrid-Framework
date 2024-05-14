@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import pageUIs.user.CustomerPageUI;
+import pojoTestData.jsonData.JsonDataNopCommerce;
 
 public class CustomerPageObject extends MyAccountSideBarPageObject {
 	WebDriver driver;
@@ -31,15 +32,27 @@ public class CustomerPageObject extends MyAccountSideBarPageObject {
 
 	}
 
+	public String getAttributeValueOfDynamicTextbox(String textboxID) {
+		waitForElementVisible(driver, CustomerPageUI.DYNAMIC_TEXTBOX_BY_ID_ACCOUNT_PAGE, textboxID);
+		return getElementAttribute(driver, CustomerPageUI.DYNAMIC_TEXTBOX_BY_ID_ACCOUNT_PAGE, "value", textboxID);
+
+	}
+
 	public void selectFemaleGender() {
 		waitForElementVisible(driver, CustomerPageUI.FEMALE_RADIO_BUTTON);
 		checkToElement(driver, CustomerPageUI.FEMALE_RADIO_BUTTON);
 
 	}
 
-	public void enterToDynamicTextBoxByIDInAccountPage(String lastNameValue, String textboxID) {
+	public void selectDynamicGender(String genderValue) {
+		waitForElementVisible(driver, CustomerPageUI.DYNAMIC_RADIO_BUTTON,genderValue );
+		checkToElement(driver, CustomerPageUI.DYNAMIC_RADIO_BUTTON, genderValue);
+
+	}
+
+	public void enterToDynamicTextBoxByIDInAccountPage(String valueToSend, String textboxID) {
 		waitForElementVisible(driver, CustomerPageUI.DYNAMIC_TEXTBOX_BY_ID_ACCOUNT_PAGE, textboxID);
-		sendkeyToElement(driver, CustomerPageUI.DYNAMIC_TEXTBOX_BY_ID_ACCOUNT_PAGE, lastNameValue, textboxID);
+		sendkeyToElement(driver, CustomerPageUI.DYNAMIC_TEXTBOX_BY_ID_ACCOUNT_PAGE, valueToSend, textboxID);
 
 	}
 
@@ -66,6 +79,12 @@ public class CustomerPageObject extends MyAccountSideBarPageObject {
 	public boolean checkSelectedFemaleGender() {
 		waitForElementVisible(driver, CustomerPageUI.FEMALE_RADIO_BUTTON);
 		return isElementSelected(driver, CustomerPageUI.FEMALE_RADIO_BUTTON);
+
+	}
+
+	public boolean checkDynamicGenderRadioButtonSelected(String genderValue) {
+		waitForElementVisible(driver, CustomerPageUI.DYNAMIC_RADIO_BUTTON, genderValue);
+		return isElementSelected(driver, CustomerPageUI.DYNAMIC_RADIO_BUTTON, genderValue);
 
 	}
 
@@ -136,5 +155,17 @@ public class CustomerPageObject extends MyAccountSideBarPageObject {
 		waitForElementInvisible(driver, CustomerPageUI.PASSWORD_CHANGE_SUCCESS_MESS);
 
 	}
+
+	public void setToCustomerInforForm(JsonDataNopCommerce customerData) {
+	enterToDynamicTextBoxByIDInAccountPage(customerData.getFirstName(),"FirstName");
+	enterToDynamicTextBoxByIDInAccountPage(customerData.getLastName(),
+			"LastName");
+	enterToDynamicTextBoxByIDInAccountPage(customerData.getEmail(),"Email");
+	enterToDynamicTextBoxByIDInAccountPage(customerData.getCompanyName(),"Company");
+	selectDynamicValueInDOBDropDownInAccountPageByName(customerData.getDayOfDOB(),"DateOfBirthDay");
+	selectDynamicValueInDOBDropDownInAccountPageByName(customerData.getMonthOfDOB(),"DateOfBirthMonth");
+	selectDynamicValueInDOBDropDownInAccountPageByName(customerData.getYearOfDOB(),"DateOfBirthYear");
+	}
+
 
 }

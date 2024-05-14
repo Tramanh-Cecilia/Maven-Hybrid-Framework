@@ -9,7 +9,7 @@ public class CustomerPageUI {
 	
 	
 	
-	public static final String MALE_RADIO_BUTTON="xpath=//input[@id='gender-male']";
+	public static final String DYNAMIC_RADIO_BUTTON="xpath=//input[@value='%s']";
 	public static final String FEMALE_RADIO_BUTTON="xpath=//input[@id='gender-female']";
 	
 	public static final String DYNAMIC_DOB_DROPDOWN_BY_NAME="xpath=//select[@name='%s']";
