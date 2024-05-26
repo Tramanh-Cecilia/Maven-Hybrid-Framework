@@ -14,7 +14,7 @@
 		<classes>
 			<class name="nopcommerce.checklist.Common_Register" />
 <!--			<class name="nopcommerce.checklist.Common_LogIn" />-->
-			<class name="nopcommerce.checklist.TC_04_Customer_Account" />
+			<class name="nopcommerce.checklist.TC_07_SortAndSearch" />
 		</classes>
 	</test>
 	<!--

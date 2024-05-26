@@ -171,34 +171,34 @@ public class TC_04_Customer_Account extends BaseTest {
         changePasswordPage.clickToChangePasswordButton();
 
         Assert.assertEquals(changePasswordPage.getNotificationHeaderMessage(), "Password was changed");
-       ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 4: Close Banner");
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 4: Close Banner");
         changePasswordPage.clickToCloseButtonOnSuccessMessageBanner();
 
-        ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 5: Click to Log out Button");
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 5: Click to Log out Button");
         changePasswordPage.clickToHeaderLinkByNameWithJS("Log out");
-        homePage=PageGeneratorManager.getHomePage(driver);
+        homePage = PageGeneratorManager.getHomePage(driver);
 
-        ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 6: Click to Log In Button");
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 6: Click to Log In Button");
         homePage.clickToHeaderLinkByName("Log in");
-        loginPage= PageGeneratorManager.getUserLoginPage(driver);
+        loginPage = PageGeneratorManager.getUserLoginPage(driver);
 
-        ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 7:Enter To  Login form with old Password "+Common_Register.password);
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 7:Enter To  Login form with old Password " + Common_Register.password);
         loginPage.enterToLoginForm(Common_Register.emailAddress, Common_Register.password);
 
-        ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 8:Verify error message");
-        Assert.assertEquals( loginPage.getErrorMessageInLoginPage(), "Login was unsuccessful. Please correct the errors and try again.\n"
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 8:Verify error message");
+        Assert.assertEquals(loginPage.getErrorMessageInLoginPage(), "Login was unsuccessful. Please correct the errors and try again.\n"
                 + "The credentials provided are incorrect");
 
-        ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 9:Enter To Log in Form with New password "+ newPassword);
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 9:Enter To Log in Form with New password " + newPassword);
         loginPage.enterToLoginForm(Common_Register.emailAddress, newPassword);
 
-        ExtentTestManager.getTest().log(Status.INFO,"Account_03 - Step 10:Get url ");
+        ExtentTestManager.getTest().log(Status.INFO, "Account_03 - Step 10:Get url ");
         Assert.assertEquals(homePage.getCurrentPageUrl(driver), "https://demo.nopcommerce.com/");
 
 
-
-
     }
+
+    @Test
 
     @AfterClass
     public void afterClass() {
