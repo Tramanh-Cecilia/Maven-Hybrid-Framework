@@ -47,5 +47,34 @@ public class PageGeneratorManager {
         return new ChangePasswordPageObject(driver);
     }
 
+    public static CategoriesPageObject getCategoriesPageObject(WebDriver driver){
+        return new CategoriesPageObject(driver);
+
+    }
+
+    public static SpecificProductPageObject getSpecificProductPageObject(WebDriver driver){
+        return new SpecificProductPageObject(driver);
+
+    }
+
+    public static MyProductReviewPage getMyProductReviewPage(WebDriver driver){
+        return new MyProductReviewPage(driver);
+
+    }
+
+    public static SearchPageObject getSearchPageObject(WebDriver driver){
+        return new SearchPageObject(driver);
+
+    }
+
+    public static WishListPageObject getWishListPageObject(WebDriver driver){
+        return new WishListPageObject(driver);
+
+    }
+
+    public static ShoppingCartPageObject getShoppingCartPageObject(WebDriver driver){
+        return new ShoppingCartPageObject(driver);
+    }
+
 
 }

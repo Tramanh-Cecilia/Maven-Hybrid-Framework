@@ -2,7 +2,7 @@ package utilities;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"file:environmentConfig/${serverName}_poperties"})
+@Config.Sources({"file:environmentConfig/${serverName}_properties"})
 public interface EnvironmentConfig extends Config {
 
     @Key("App.Url")

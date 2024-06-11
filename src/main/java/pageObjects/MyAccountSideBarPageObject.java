@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import commons.BaseElement;
 import commons.PageGeneratorManager;
 import pageUIs.user.MyAccountSideBarPageUI;
+import pageUIs.user.MyProductReviewPageUI;
 
 public class MyAccountSideBarPageObject extends BaseElement {
 	WebDriver driver;
@@ -42,6 +43,12 @@ public class MyAccountSideBarPageObject extends BaseElement {
 		waitForElementClickable(driver,MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT,pageName);
 		clickToElement(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT,pageName);
 		return PageGeneratorManager.getchangePasswordPageObject(driver);
+	}
+
+	public MyProductReviewPage openMyProductRevewPage(String pageName){
+		waitForElementClickable(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT, pageName);
+		clickToElement(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK_TEXT, pageName);
+		return PageGeneratorManager.getMyProductReviewPage(driver);
 	}
 
 	public MyAccountSideBarPageObject openDynamicSidePageBar(String pageName) {

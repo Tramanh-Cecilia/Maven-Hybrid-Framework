@@ -2,6 +2,8 @@ package utilities;
 
 import com.github.javafaker.Faker;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.Locale;
 
 public class FakerConfig {
@@ -37,5 +39,12 @@ public class FakerConfig {
     }   public String getPassword(){
         return faker.internet().password();
 
+    }
+
+
+    public String getRandomText(){
+        Instant time = Instant.now();
+        String randomText;
+        return randomText= faker.demographic().toString()+ time;
     }
 }

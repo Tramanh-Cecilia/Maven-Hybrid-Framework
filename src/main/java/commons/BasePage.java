@@ -85,7 +85,7 @@ public class BasePage {
 		Set<String> allIds = driver.getWindowHandles();
 
 		for (String id : allIds) {
-			if (!id.equals(allIds)) {
+			if (!id.equals(pageID)) {
 				driver.switchTo().window(id);
 				break;
 
@@ -177,6 +177,10 @@ public class BasePage {
 
 	public List<WebElement> getListWebElement(WebDriver driver, String locator) {
 		return driver.findElements(getByLocator(locator));
+	}
+
+	public List<WebElement> getListWebElement(WebDriver driver, String locator, String... restParams) {
+		return driver.findElements(getByLocator(getDynamicLocator(locator, restParams)));
 	}
 
 	public void clickToElement(WebDriver driver, String locator) {
@@ -326,6 +330,24 @@ public class BasePage {
 		
 	}
 
+
+	public boolean isElementUnDisplayed(WebDriver driver, String locator,String... restParams) {
+		boolean status= false;
+		setImplicitWait(driver, shortTimeout);
+		List<WebElement> elements= getListWebElement(driver, locator,restParams);
+		setImplicitWait(driver,longTimeout);
+		if (elements.size()==1 && !elements.get(0).isDisplayed())
+			status = true;
+		else if (elements.size()> 0) {
+			status = true;
+		} else {
+			return status ;
+		}
+		return status;
+
+	}
+
+
 	public boolean isElementSelected(WebDriver driver, String locator) {
 		return getWebElement(driver, locator).isSelected();
 	}
@@ -349,7 +371,10 @@ public class BasePage {
 
 	public void hoverToElement(WebDriver driver, String locator) {
 		new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
-		;
+
+	}public void hoverToElement(WebDriver driver, String locator, String... resParams) {
+		new Actions(driver).moveToElement(getWebElement(driver, getDynamicLocator(locator,resParams))).perform();
+
 	}
 
 	public void doubleClickToElement(WebDriver driver, String locator) {
@@ -456,6 +481,9 @@ public class BasePage {
 	public void waitForListElementVisible(WebDriver driver, String locator) {
 		new WebDriverWait(driver, Duration.ofSeconds(longTimeout))
 				.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(locator)));
+	}public void waitForListElementVisible(WebDriver driver, String locator, String... restParams) {
+		new WebDriverWait(driver, Duration.ofSeconds(longTimeout))
+				.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(getDynamicLocator(locator,restParams))));
 	}
 
 	public void waitForElementInvisible(WebDriver driver, String locator) {

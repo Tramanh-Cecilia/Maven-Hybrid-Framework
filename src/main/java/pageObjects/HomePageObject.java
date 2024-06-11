@@ -49,6 +49,14 @@ public class HomePageObject extends BaseElement {
 		return isElementDisplayed(driver, HomePageUI.LOGIN_LINK);
 	}
 
-	
 
+    public void hoverToProductOnHeaderMenuwithDynamicProductName(String productName) {
+		waitForElementClickable(driver,HomePageUI.DYNAMIC_PRODUCT_NAME_ON_HEADER_MENU,productName);
+		hoverToElement(driver,HomePageUI.DYNAMIC_PRODUCT_NAME_ON_HEADER_MENU, productName );
+    }
+
+	public void selectADynamicProductinSublistMenuByName(String productName) {
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_PRODUCT_NAME_ON_SUBLIST_MENU, productName);
+		clickToElement(driver, HomePageUI.DYNAMIC_PRODUCT_NAME_ON_SUBLIST_MENU, productName);
+	}
 }

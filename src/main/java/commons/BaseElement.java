@@ -5,6 +5,7 @@ import java.util.Random;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.HomePageObject;
+import pageObjects.ShoppingCartPageObject;
 import pageUIs.user.BaseElementUI;
 
 public class BaseElement extends BasePage {
@@ -30,14 +31,21 @@ public class BaseElement extends BasePage {
 
 	}
 
+	public void clickToFooterLinkByName(String pageName) {
+		waitForElementClickable(driver, BaseElementUI.DYNAMIC_FOOTER_LINK_BY_NAME, pageName);
+		clickToElement(driver, BaseElementUI.DYNAMIC_FOOTER_LINK_BY_NAME, pageName);
+
+	}
+
 	public void clickToHeaderLinkByNameWithJS(String pageName) {
 		waitForElementClickable(driver, BaseElementUI.DYNAMIC_HEADER_LINK_BY_NAME, pageName);
 		clickToElementByJS(driver, BaseElementUI.DYNAMIC_HEADER_LINK_BY_NAME, pageName);
 
 	}
-	public void clickToButtonByText(String buttonText) {
+	public ShoppingCartPageObject clickToButtonByText(String buttonText) {
 		waitForElementClickable(driver, BaseElementUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
 		clickToElement(driver, BaseElementUI.DYNAMIC_BUTTON_BY_TEXT,buttonText);
+		return PageGeneratorManager.getShoppingCartPageObject(driver);
 	}
 	public String getErrorMessageByID(String errorMessageID) {
 		waitForElementVisible(driver, BaseElementUI.DYNAMIC_ERROR_MESSAGE_BY_ID, errorMessageID);
@@ -69,5 +77,7 @@ public class BaseElement extends BasePage {
 		waitForElementClickable(driver,BaseElementUI.CLOSE_BUTTON_FOR_SUCCESS_MESSAGE);
 		clickToElement(driver,BaseElementUI.CLOSE_BUTTON_FOR_SUCCESS_MESSAGE );
 	}
+
+
 
 }

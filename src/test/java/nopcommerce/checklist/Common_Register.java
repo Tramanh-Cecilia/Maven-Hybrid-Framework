@@ -22,7 +22,7 @@ public class Common_Register extends BaseTest {
     private LoginPageObject loginPage;
     private FakerConfig fakerConfig;
     private static UserInfo userInfo;
-    public static String emailAddress, password;
+    public static String emailAddress, password, firstName, lastName;
 
     @Parameters({"browser", "userUrl"})
     @BeforeTest()
@@ -42,6 +42,9 @@ public class Common_Register extends BaseTest {
         userInfo.setPassword(fakerConfig.getPassword());
         emailAddress = userInfo.getEmailAddress();
         password = userInfo.getPassword();
+        firstName= userInfo.getFirstName();
+        lastName= userInfo.getLastName();
+
         registerPage.setToRegisterform(userInfo);
         registerPage.clickToRegisterButton();
         driver.quit();
