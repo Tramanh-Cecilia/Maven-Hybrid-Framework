@@ -2,6 +2,7 @@ package commons;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.openqa.selenium.Alert;
@@ -20,6 +21,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import dev.failsafe.internal.util.Durations;
 import pageUIs.user.BaseElementUI;
+
+import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 
 public class BasePage {
@@ -238,9 +241,28 @@ public class BasePage {
 			String expectedTextItem) {
 		clickToElement(driver, parentlocator);
 		new WebDriverWait(driver, Duration.ofSeconds(longTimeout))
-				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(childxpath)));
+				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childxpath)));
 
-		List<WebElement> listItems = driver.findElements(By.xpath(childxpath));
+		List<WebElement> listItems = getListWebElement(driver, childxpath);
+
+		for (WebElement tempItem : listItems) {
+			if (tempItem.getText().trim().equals(expectedTextItem)) {
+				tempItem.click();
+				break;
+
+			}
+		}
+
+	}
+
+
+	public void selectedItemInDropdown(WebDriver driver, String parentlocator, String childxpath,
+									   String expectedTextItem, String... restParams) {
+		clickToElement(driver, parentlocator, restParams);
+		new WebDriverWait(driver, Duration.ofSeconds(longTimeout))
+				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(getDynamicLocator(childxpath, restParams))));
+
+		List<WebElement> listItems = getListWebElement(driver, childxpath, restParams);
 
 		for (WebElement tempItem : listItems) {
 			if (tempItem.getText().trim().equals(expectedTextItem)) {
@@ -271,7 +293,7 @@ public class BasePage {
 		return getListWebElement(driver, locator).size();
 	}
 	
-	public int getListElementSize(WebDriver driver, String locator, String restParams) {
+	public int getListElementSize(WebDriver driver, String locator, String... restParams) {
 		return getListWebElement(driver, getDynamicLocator(locator, restParams)).size();
 	}
 
@@ -286,7 +308,7 @@ public class BasePage {
 		}
 	}
 
-	public void checkToElement(WebDriver driver, String locator, String restParams) {
+	public void checkToElement(WebDriver driver, String locator, String... restParams) {
 		if (!getWebElement(driver,  getDynamicLocator(locator,restParams)).isSelected()) {
 			getWebElement(driver,  getDynamicLocator(locator,restParams)).click();
 		}
@@ -301,6 +323,11 @@ public class BasePage {
 	public void uncheckToElement(WebDriver driver, String locator) {
 		if (getWebElement(driver, locator).isSelected()) {
 			getWebElement(driver, locator).click();
+		}
+	}
+	public void uncheckToElement(WebDriver driver, String locator, String... restParams) {
+		if (getWebElement(driver, getDynamicLocator(locator,restParams)).isSelected()) {
+			getWebElement(driver, getDynamicLocator(locator,restParams)).click();
 		}
 	}
 
@@ -551,6 +578,13 @@ public class BasePage {
 		fullFileName=fullFileName.trim();
 		getWebElement(driver,UploadButton).sendKeys(fullFileName);
 		
+	}
+
+
+	public int getRandomNumberInGivenRange(int number){
+		Random random= new Random();
+		return random.nextInt(number);
+
 	}
 	
 	

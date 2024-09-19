@@ -46,8 +46,8 @@ public class TC_05_Add_Product_Review extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "");
         ExtentTestManager.getTest().log(Status.INFO, "");
         homePage = PageGeneratorManager.getHomePage(driver);
-        homePage.hoverToProductOnHeaderMenuwithDynamicProductName("Computers");
-        homePage.selectADynamicProductinSublistMenuByName("Desktops");
+        homePage.ChooseProductOnHeaderorSubMenuwithDynamicProductName();
+//
 
         categoriesPage = PageGeneratorManager.getCategoriesPageObject(driver);
 

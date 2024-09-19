@@ -11,4 +11,6 @@ public class HomePageUI {
     public static final String DYNAMIC_PRODUCT_NAME_ON_HEADER_MENU = "xpath=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]";
     public static final String DYNAMIC_PRODUCT_NAME_ON_SUBLIST_MENU = "xpath=//ul[@class='top-menu notmobile']//ul[@class='sublist first-level']//a[contains(text(),'%s')]";
 
+    public static final String LIST_PRODUCTS_ON_ON_HEADER_MENU ="xpath=//ul[@class='top-menu notmobile']/li[not(@class='sublist first-level')]/a" ;
+    public static final String DYNAMIC_SUBLIST_PRODUCTS_ON_ON_HEADER_MENU ="xpath=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]//parent::li//ul/li/a" ;
 }

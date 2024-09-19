@@ -1,16 +1,18 @@
 package pageObjects.admin;
 
+import commons.BaseElement;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import pageUIs.admin.AdminDashboardPageUI;
 
-public class AdminDashboardPageObject extends BasePage {
+public class AdminDashboardPageObject extends AdminSideBarPageObject {
 	WebDriver driver;
 
 	public AdminDashboardPageObject(WebDriver driver) {
-		this.driver = driver;
+        super(driver);
+        this.driver = driver;
 	}
 
 	public AdminLoginPageObject clickToAdminLogoutLink() {

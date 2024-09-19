@@ -10,4 +10,5 @@ public class WishListPageUI {
     public static final String DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX= "xpath=//tr[%s]//td[%s]";
 
 
+    public static final String NO_DATA_MESSAGE_TEXT ="CSS=div.no-data";
 }

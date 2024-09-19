@@ -77,4 +77,18 @@ public class WishListPageObject extends BaseElement {
 
 
     }
+
+    public void clickToRemoveButtonInWishlistTable (String productName, String columnName){
+        int rowIndex= getListElementSize(driver, WishListPageUI.ROW_INDEX_BY_PRODUCT_NAME, productName)+1;
+        int columnIndex=getListElementSize(driver, WishListPageUI.COLUMN_INDEX_BY_COLUMN_NAME_TEXT,columnName )+1;
+        clickToElement(driver, WishListPageUI.DYNAMIC_CHECKBOX_BY_ROW_INDEX_AND_COLUMN_INDEX, String.valueOf(rowIndex), String.valueOf(columnIndex));
+
+
+    }
+
+    public String getNoDataMessage (){
+        waitForElementVisible(driver, WishListPageUI.NO_DATA_MESSAGE_TEXT);
+        return getElementText(driver, WishListPageUI.NO_DATA_MESSAGE_TEXT);
+
+    }
 }

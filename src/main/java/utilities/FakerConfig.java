@@ -33,18 +33,51 @@ public class FakerConfig {
     public String getStreetName(){
         return faker.address().streetName();
 
-    }   public String getEmailAddress(){
+    }
+    public String getEmailAddress(){
         return faker.internet().emailAddress();
+    }
 
-    }   public String getPassword(){
+    public String getUserName() {
+        return faker.name().fullName();
+    }
+
+    public String getPassword(){
         return faker.internet().password();
 
     }
 
+    public String getCompany(){
+        return faker.company().name();
+    }
+
+    public String getStreetAddress(){
+        return faker.address().fullAddress();
+    }
+
+    public String getSecondAddress(){
+        return faker.address().secondaryAddress();
+    }
+
+    public String getZipcode(){
+        return faker.address().zipCode();
+    }
+
+    public String getPhoneNumber(){
+        return faker.phoneNumber().phoneNumber();
+    }
+    public String getFaxnumber(){
+        return faker.number().digit();
+    }
 
     public String getRandomText(){
         Instant time = Instant.now();
         String randomText;
         return randomText= faker.demographic().toString()+ time;
+    }
+
+    public String getDOB() {
+      return String.valueOf(faker.date().birthday());
+
     }
 }

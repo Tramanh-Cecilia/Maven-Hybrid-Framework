@@ -18,4 +18,11 @@ public class GlobalConstants {
 	public static final String RESOURCES_PATH="D:\\Automation\\03 - Maven-Hybrid-Framework\\src\\test" + File.separator+"resources"+File.separator;
 	public static final String RESOURCES_PROJECT_PATH= RELATIVE_PROJECT_PATH+ File.separator+"src\\test\\resources\\";
 	public static final String ENVIRONMENT_CONFIG_PATH= RELATIVE_PROJECT_PATH+ File.separator+"environmentConfig"+ File.separator;
+	public static final String BROWSER_USERNAME = "anhtrm_l7rWnE";
+	public static final String BROWSER_AUTOMATE_KEY = "ARH7bw3Qz59CHZqpRbqz";
+	public static final String BROWSER_STACK_URL = "https://" + BROWSER_USERNAME + ":" +
+			BROWSER_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
 }
+
+

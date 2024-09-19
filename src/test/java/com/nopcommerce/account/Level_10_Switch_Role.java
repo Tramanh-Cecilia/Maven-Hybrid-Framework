@@ -11,13 +11,11 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.AddressPageObject;
 import pageObjects.CustomerPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.OrderPageObject;
 import pageObjects.RegisterPageObject;
-import pageObjects.RewardPointPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 
@@ -69,7 +67,7 @@ public class Level_10_Switch_Role extends BaseTest {
 		homePage.openPageUrl(driver, this.adminURL);
 		adminLoginPage= PageGeneratorManager.getAdminLoginPage(driver);
 		
-		adminDashboardPage= adminLoginPage.loginToAdmin("admin@yourstore.com", "admin");
+		adminDashboardPage= adminLoginPage.loginToAdmin("admin@yourstore.com", "com/nopcommerce/admin");
 	
 		Assert.assertTrue(adminDashboardPage.isPageLoadedSuccess(driver));
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageUIs.user.BaseElementUI;
 import pageUIs.user.CategoriesPageObjectUI;
+import pageUIs.user.SpecificProductPageUI;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +16,7 @@ import java.util.Random;
 
 public class CategoriesPageObject extends BaseElement {
     WebDriver driver;
+    private HomePageObject homePage;
 
     public static String productName;
 
@@ -32,9 +34,13 @@ public class CategoriesPageObject extends BaseElement {
 
     }
 
-    public SpecificProductPageObject openASpecificProductPageByProductName(String productName) {
+    public void clickToProductByProductName(String productName){
         waitForElementClickable(driver, CategoriesPageObjectUI.DYNAMIC_PRODUCT_BY_TEXT_NAME, productName);
         clickToElement(driver, CategoriesPageObjectUI.DYNAMIC_PRODUCT_BY_TEXT_NAME, productName);
+    }
+
+    public SpecificProductPageObject openASpecificProductPageByProductName(String productName) {
+        clickToProductByProductName(productName);
         isPageLoadedSuccess(driver);
         return PageGeneratorManager.getSpecificProductPageObject(driver);
     }
@@ -57,10 +63,14 @@ public class CategoriesPageObject extends BaseElement {
                     break;
                 } else {  // If adding to wishlist failed, remove the product from the list and try another
                     listProduct.remove(index);
+                    backToPage(driver);
                 }
 
             } catch (Exception e) {
                 listProduct.remove(index);
+                backToPage(driver);
+                homePage = PageGeneratorManager.getHomePage(driver);
+                homePage.ChooseProductOnHeaderorSubMenuwithDynamicProductName();
             }
 
 
@@ -70,6 +80,14 @@ public class CategoriesPageObject extends BaseElement {
         } else {
             return PageGeneratorManager.getSpecificProductPageObject(driver);
         }
+    }
+
+    public SpecificProductPageObject openRandomProductPage() {
+        List<WebElement> listProduct = getListOfProductName();
+        var randomItem = getRandomNumberInGivenRange(listProduct.size());
+        var productName = listProduct.get(randomItem).getText();
+        return openASpecificProductPageByProductName(productName);
+
     }
 
 
@@ -230,4 +248,64 @@ public class CategoriesPageObject extends BaseElement {
         return actualProductPrice.equals(expectedProductPrice);
     }
 
+    public void clickToCompareButtonBasedOnProductName(String productName) {
+        waitForElementClickable(driver, CategoriesPageObjectUI.COMPARE_BUTTON_BY_PRODUCT_NAME, productName);
+        clickToElement(driver, CategoriesPageObjectUI.COMPARE_BUTTON_BY_PRODUCT_NAME, productName);
+
+    }
+
+    public void clickToAddToCartButtonBasedOnProductName(String productName) {
+        waitForElementClickable(driver, CategoriesPageObjectUI.ADD_TO_CART_BUTTON_BY_PRODUCT_NAME, productName);
+        clickToElement(driver, CategoriesPageObjectUI.ADD_TO_CART_BUTTON_BY_PRODUCT_NAME, productName);
+        isAjaxLoadingUndisplayed();
+
+    }
+
+    public String getProductPriceBasedOnProductName(String productName){
+        waitForElementClickable(driver, CategoriesPageObjectUI.PRODUCT_PRICE_BY_PRODUCT_NAME, productName);
+        return getElementText(driver, CategoriesPageObjectUI.PRODUCT_PRICE_BY_PRODUCT_NAME, productName);
+
+    }
+
+    public String getRadondomProductName() {
+        List<WebElement> listProduct = getListOfProductName();
+        var randomItem = getRandomNumberInGivenRange(getSizeOfProductList());
+        return listProduct.get(randomItem).getText();
+
+    }
+
+    public String addProductToCompareListWithoutRepeating(String previousProductName) {
+        List<WebElement> listProduct = getListOfProductName();
+        var randomItem = getRandomNumberInGivenRange(getSizeOfProductList());
+        var nextProductName = listProduct.get(randomItem).getText();
+        if (!previousProductName.equals(nextProductName)) {
+            clickToCompareButtonBasedOnProductName(nextProductName);
+            return nextProductName;
+        } else {
+            listProduct.remove(randomItem);
+            var newSize = listProduct.size();
+            var newProductName = listProduct.get(getRandomNumberInGivenRange(newSize)).getText();
+            clickToCompareButtonBasedOnProductName(newProductName);
+            return newProductName;
+
+        }
+
+
+    }
+
+    public void clickToMultipleProductsOnPage(){
+        int size =getNumberOfProductOnPage();
+        for (int i = 0; i < size; i ++){
+           var productName= getListOfProductName().get(i).getText();
+            clickToProductByProductName(productName);
+            backToPage(driver);
+        }
+
+    }
+
 }
+
+
+
+
+

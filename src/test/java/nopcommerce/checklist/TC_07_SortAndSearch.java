@@ -45,10 +45,10 @@ public class TC_07_SortAndSearch extends BaseTest {
         ExtentTestManager.startTest(method.getName(), "Sort_01_Sort_With_Name_FromAToZ");
         ExtentTestManager.getTest().log(Status.INFO, "Sort 01 -Step 1: Hover to Product Header");
 
-        homePage.hoverToProductOnHeaderMenuwithDynamicProductName("Computers");
+        homePage.ChooseProductOnHeaderorSubMenuwithDynamicProductName();
 
         ExtentTestManager.getTest().log(Status.INFO, "Sort 01 -Step 2: Select NoteBooks sublist");
-        homePage.selectADynamicProductinSublistMenuByName("Notebooks");
+
         categoryPage = PageGeneratorManager.getCategoriesPageObject(driver);
 
         ExtentTestManager.getTest().log(Status.INFO, "Sort 01 - Step 3: Select Sort Type From A to Z");

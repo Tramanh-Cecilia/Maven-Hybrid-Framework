@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite parallel="false" name="NopCommerce">
-	<parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/" />
-	<parameter name="userUrl" value="https://demo.nopcommerce.com/" />
+<suite parallel="false" name="Orange HRM">
 	<listeners>
 		<listener class-name="commons.MethodListener" />
 		<listener class-name="reportConfig.ExtentTestListener" />
@@ -10,16 +8,16 @@
 	</listeners>
 	<test name="Run" preserve-order="true">
 		<parameter name="browser" value="firefox" />
-		<parameter name="url" value="https://demo.nopcommerce.com/" />
-		<parameter name="adminEmail" value="admin@yourstore.com" />
-		<parameter name="adminPassword" value="admin" />
+		<parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
+		<parameter name="username" value="Admin" />
+		<parameter name="password" value="admin123" />
 		<classes>
-<!--			<class name="nopcommerce.checklist.Common_Register" />-->
-<!--			<class name="nopcommerce.checklist.Common_LogIn" />-->
-			<class name="nopcommerce.checklist.TC_12_admin_customers" />
+			<class name="orangeHrm.CommonLoginPage" />
+
+			<class name="orangeHrm.Admin_01_UserManagement" />
 		</classes>
 	</test>
-	<!--
+	<!--  "url", "browser","username","password"}
 <test name="Run On Chrome">
   <parameter name ="browser" value ="chrome"/>
     <classes>

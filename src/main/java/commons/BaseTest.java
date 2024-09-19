@@ -2,16 +2,21 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -95,6 +100,32 @@ public class BaseTest {
         driver.get(getUrlByServerName(serverName));
         return driver;
     }
+
+    protected WebDriver getBrowserDriversOnBroswerStack(String url, String browserName, String os, String os_version, String  browser_version) {
+        MutableCapabilities capabilities = new MutableCapabilities();
+        HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
+        capabilities.setCapability("browserName", browserName);
+        bstackOptions.put("os", os);
+        bstackOptions.put("osVersion", os_version);
+        bstackOptions.put("browserVersion", browser_version);
+        bstackOptions.put("consoleLogs", "info");
+        bstackOptions.put("seleniumVersion", "4.22.0");
+        bstackOptions.put("projectName", "Tram Anh test level 19");
+        capabilities.setCapability("bstack:options", bstackOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get(url);
+        return driver;
+    }
+
+
 
     private String getUrlByServerName(String serverName) {
         ServerList server= ServerList.valueOf(serverName.toUpperCase());

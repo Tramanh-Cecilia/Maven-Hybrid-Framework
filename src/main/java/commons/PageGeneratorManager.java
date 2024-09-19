@@ -3,6 +3,8 @@ package commons;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.*;
+import pageObjects.admin.AdminCustomerPageObject;
+import pageObjects.admin.AdminProductPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
 
@@ -43,6 +45,14 @@ public class PageGeneratorManager {
         return new AdminDashboardPageObject(driver);
     }
 
+    public static AdminProductPageObject getAdminProductPage(WebDriver driver) {
+        return new AdminProductPageObject(driver);
+    }
+
+    public static AdminCustomerPageObject getAdminCustomerPage(WebDriver driver) {
+        return new AdminCustomerPageObject(driver);
+    }
+
     public static ChangePasswordPageObject getchangePasswordPageObject(WebDriver driver) {
         return new ChangePasswordPageObject(driver);
     }
@@ -76,5 +86,11 @@ public class PageGeneratorManager {
         return new ShoppingCartPageObject(driver);
     }
 
+    public static CompareProductPageObject getCompareProductPageObject(WebDriver driver){
+        return new CompareProductPageObject(driver);
+    }
 
+    public static CheckoutPageObject getCheckoutPageObject(WebDriver driver){
+        return new  CheckoutPageObject(driver);
+    }
 }

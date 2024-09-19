@@ -72,10 +72,24 @@ public class BaseElement extends BasePage {
 		waitForElementVisible(driver, BaseElementUI.DYNAMIC_NOTIFICATION_HEADER);
 		return getElementText(driver, BaseElementUI.DYNAMIC_NOTIFICATION_HEADER);
 	}
+	public String getHiddenLinkInSuccessMessage () {
+		waitForElementVisible(driver, BaseElementUI.HIDDEN_LINK_IN_SUCCESS_MESSAGE );
+		return getElementText(driver, BaseElementUI.HIDDEN_LINK_IN_SUCCESS_MESSAGE );
+    }
+
+	public void clickToHiddenLinkInSuccessMessage(){
+		waitForElementClickable(driver, BaseElementUI.HIDDEN_LINK_IN_SUCCESS_MESSAGE);
+		clickToElement(driver, BaseElementUI.HIDDEN_LINK_IN_SUCCESS_MESSAGE);
+	}
+
 
 	public void clickToCloseButtonOnSuccessMessageBanner(){
 		waitForElementClickable(driver,BaseElementUI.CLOSE_BUTTON_FOR_SUCCESS_MESSAGE);
 		clickToElement(driver,BaseElementUI.CLOSE_BUTTON_FOR_SUCCESS_MESSAGE );
+	}
+
+	public void isAjaxLoadingUndisplayed(){
+		waitForElementInvisible(driver, BaseElementUI.AJAX_LOADING_ICON);
 	}
 
 
